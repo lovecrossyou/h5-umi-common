@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './page.less';
 import {Button} from 'antd-mobile';
 import Example from './components/Example';
-            
+
 function App(props) {
     const exampleData = {
         list:props.pageData.list,
@@ -29,7 +29,7 @@ function App(props) {
         </div>
     );
 }
-      
+
 export default connect(state => {
     return {
         pageData: state.list
