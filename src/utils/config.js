@@ -4,7 +4,7 @@ const APIV2 = isMock?APIV1:'/api/v1/th';
 module.exports = {
   name: 'dva-umi-mobile',
   prefix: 'dvaumimobile',
-  openPages: ['/login'],
+  openPages: ['/points/page','/login/page'],
   apiPrefix: '/api/v1',
   APIV1,
   APIV2,

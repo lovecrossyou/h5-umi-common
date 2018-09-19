@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "umi dev",
+    "start": "BABELRC=1 umi dev",
     "build": "umi build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",
@@ -11,11 +11,14 @@
     "antd": "^3.9.2",
     "antd-mobile": "^2.2.5",
     "babel-eslint": "^9.0.0",
+    "babel-plugin-import": "^1.9.1",
     "jest": "^22.4.3",
     "mockjs": "^1.0.1-beta3",
+    "rc-form": "^2.2.3",
     "react-helmet": "^5.2.0",
     "umi": "*",
-    "umi-plugin-dva": "*"
+    "umi-plugin-dva": "*",
+    "umi-plugin-react": "^1.0.3"
   },
   "devDependencies": {
     "antd-pro-server": "^1.0.1",

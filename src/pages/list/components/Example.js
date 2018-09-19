@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button} from 'antd-mobile';
-import styles from './Example.less';
 const Example = ({list,handleClick}) => {
   return (
     <div>

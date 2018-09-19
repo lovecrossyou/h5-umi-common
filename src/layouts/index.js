@@ -7,6 +7,7 @@ import config from "../utils/config";
 const { prefix, openPages } = config;
 
 const Layout = props => {
+  console.log('props.pathname ',props.pathname)
   if (openPages && openPages.includes(props.pathname)) {
     return <div> {props.children}</div>;
   }
