@@ -45,7 +45,7 @@
 克隆项目文件:
 
 ```bash
-git clone https://github.com/xiaohuoni/dva-umi-mobile.git
+https://github.com/lovecrossyou/h5-umi-common.git
 ```
 
 进入目录安装依赖:
