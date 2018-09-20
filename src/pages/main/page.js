@@ -7,11 +7,13 @@ function App(props) {
             <br/>
             <Link to="/login/page">登录页</Link>
             <br/>
-            <Link to="/list/page">购物车</Link>
+            <Link to="/shoppingcart/page">购物车</Link>
           <br/>
-          <Link to="/login/page">订单列表</Link>
+          <Link to="/order/page">订单列表</Link>
           <br/>
           <Link to="/points/page">积分商城</Link>
+          <br/>
+          <Link to="/productlist/page">商品列表</Link>
         </div>
     );
 }

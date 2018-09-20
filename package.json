@@ -10,8 +10,10 @@
   "dependencies": {
     "antd": "^3.9.2",
     "antd-mobile": "^2.2.5",
+    "antd-mobile-demo-data": "^0.2.0",
     "babel-eslint": "^9.0.0",
     "babel-plugin-import": "^1.9.1",
+    "install": "^0.12.1",
     "jest": "^22.4.3",
     "mockjs": "^1.0.1-beta3",
     "rc-form": "^2.2.3",
