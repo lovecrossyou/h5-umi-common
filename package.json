@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "BABELRC=1 umi dev",
+    "start": "umi dev",
     "build": "umi build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",

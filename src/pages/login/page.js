@@ -3,7 +3,6 @@ import {connect} from 'dva';
 import {Button, WhiteSpace,InputItem,List} from 'antd-mobile';
 import { createForm } from 'rc-form';
 
-import 'antd/lib/button/style';
 const bgUrl = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535982564716&di=27ec1f5e867631a13e971042fc8064b9&imgtype=0&src=http%3A%2F%2Fpic23.photophoto.cn%2F20120503%2F0034034456597026_b.jpg';
 const wechatlogo = 'http://pax4lf8m2.bkt.clouddn.com/wechat_logo.png'
 

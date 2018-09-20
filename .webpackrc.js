@@ -1,7 +1,7 @@
 const path = require('path')
 export default {
   plugins:[
-    ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+    ["import", { libraryName: "antd-mobile", style: "less" }] // `style: true` 会加载 less 文件
   ],
     alias:{
         components:path.resolve(__dirname,'src/components'),
