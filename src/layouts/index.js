@@ -5,6 +5,8 @@ import router from "umi/router";
 import withRouter from "umi/withRouter";
 import config from "../utils/config";
 const { prefix, openPages } = config;
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 
 const Layout = props => {
   if (openPages && openPages.includes(props.pathname)) {
@@ -32,10 +34,23 @@ const Layout = props => {
     </div>
   );
 };
+
+
 function mapStateToProps(state) {
   return {
     text: state.global.text,
     pathname: state.routing.location.pathname
   };
 }
+
+// const Animate = withRouter(
+//   ({ location }) =>
+//     <TransitionGroup>
+//       <CSSTransition key={location.key} classNames="fade" timeout={300}>
+//         { Layout }
+//       </CSSTransition>
+//     </TransitionGroup>
+// )
+
+
 export default withRouter(connect(mapStateToProps)(Layout));
