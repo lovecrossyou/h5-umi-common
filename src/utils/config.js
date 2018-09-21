@@ -5,12 +5,7 @@ module.exports = {
   name: 'dva-umi-mobile',
   prefix: 'dvaumimobile',
   openPages: ['/points/page','/login/page'],
-  apiPrefix: '/api/v1',
-  APIV1,
-  APIV2,
-  isMock:isMock,
   api: {
-    APIV2:APIV2,
     users: `${APIV1}/users`
   },
 }

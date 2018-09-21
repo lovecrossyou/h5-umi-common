@@ -1,7 +1,3 @@
-import config from "../utils/config";
-import queryString from "query-string";
-
-const { prefix } = config;
 export default {
   namespace: "global",
   state: {

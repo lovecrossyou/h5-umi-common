@@ -2,7 +2,7 @@ import React from 'react';
 import { SwipeAction, List,Icon } from 'antd-mobile';
 import styles from './address.css'
 
-export const Address = ({address,del,edit})=>{
+export const AddressCell = ({address,del,edit})=>{
   return <div style={{margin:'10px 0',backgroundColor:'#fff'}}>
     <List>
       <SwipeAction

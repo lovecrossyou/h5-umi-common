@@ -9,10 +9,10 @@ export default {
     images: path.resolve(__dirname, 'src/assets')
   },
   // proxy: {
-  //     "/api/v1/th": {
-  //       "target": "http://url",
-  //       "changeOrigin": true,
-  //       "pathRewrite": { "^/api/v1/th": "" }
-  //     },
-  //   },
+  //   "/api": {
+  //     "target": "http://jsonplaceholder.typicode.com/",
+  //     "changeOrigin": true,
+  //     "pathRewrite": {"^/api": ""}
+  //   }
+  // },
 }

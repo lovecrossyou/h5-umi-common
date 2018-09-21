@@ -14,6 +14,10 @@ function App(props) {
           <Link to="/points/page">积分商城</Link>
           <br/>
           <Link to="/productlist/page">商品列表</Link>
+          <br/>
+          <Link to="/address/page">地址列表</Link>
+
+
         </div>
     );
 }

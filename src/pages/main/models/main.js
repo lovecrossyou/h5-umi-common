@@ -15,7 +15,7 @@ export default {
                     })
                     dispatch({
                         type:'global/setTitle',payload:{
-                          text:"公共组件列表"
+                          text:"xxxx"
                         }
                       })
                 }

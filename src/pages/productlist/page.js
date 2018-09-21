@@ -153,7 +153,7 @@ class Page extends React.Component {
 
     return (
       <div>
-        <div style={{position:'fixed',top:0,left:0,right:0,zIndex:1}}>
+        <div style={{position:'fixed',top:50,left:0,right:0,zIndex:1}}>
           <Filter/>
         </div>
         <ListView

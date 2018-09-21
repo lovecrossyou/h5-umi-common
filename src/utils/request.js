@@ -21,7 +21,7 @@ function checkStatus(response) {
  *   headers:{}
  * }
  * {
- *      method: 'POST', 
+ *      method: 'POST',
  *      mode: 'cors',
  *      body:JSON.stringify(tubState),
  *      headers:myHeaders
@@ -30,14 +30,7 @@ function checkStatus(response) {
  */
 export default async function request(options) {
   const url = options.url;
-  const option = {
-    method: options.method,
-    mode: 'cors',
-    body: JSON.stringify(options.params),
-    headers: options.headers || {}
-  }
-
-  const response = await fetch(url, option);
+  const response = await fetch(url, options);
 
   checkStatus(response);
 
@@ -47,10 +40,6 @@ export default async function request(options) {
     data,
     headers: {},
   };
-
-  if (response.headers.get('x-total-count')) {
-    ret.headers['x-total-count'] = response.headers.get('x-total-count');
-  }
 
   return ret;
 }

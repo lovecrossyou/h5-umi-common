@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'dva';
 import {Button} from 'antd-mobile';
 import styles from './page.css'
-import {AddressCell} from "./components/Address";
+import {AddressCell} from "./components/addresscell";
 import {routerRedux } from 'dva/router';
 
 
@@ -14,15 +14,15 @@ const CreateNewAddress = ({onClick}) => {
   )
 }
 
-class Page extends React.Component {
+class AddressList extends React.Component {
 
 
-  UNSAFE_componentWillMount() {
-    this.props.dispatch({
-      type: 'address/fetch',
-      payload: {}
-    });
-  }
+  // UNSAFE_componentWillMount() {
+  //   this.props.dispatch({
+  //     type: 'address/fetch',
+  //     payload: {}
+  //   });
+  // }
 
   // 编辑
   addresseEdit = (address)=>{
@@ -56,7 +56,7 @@ class Page extends React.Component {
     const store = this.props.store;
     return <div style={{paddingBottom:'60px'}}>
       {
-        store.addressList.map((address,index) => {
+        store.map((address,index) => {
           return <AddressCell
             edit={this.addresseEdit}
             del={this.addressDel}
@@ -70,6 +70,11 @@ class Page extends React.Component {
 }
 
 
-export default connect(({address})=>({
-  store:address,
-}))(Page);
+export default connect(state=>{
+  return {
+    store:state.address.list
+  }
+})(AddressList);
+
+
+//
