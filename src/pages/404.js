@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './404.less'
-import { Button,Icon } from 'antd';
 import { connect } from 'dva';
+import devIcon from '../assets/dev-page.png'
 
 export default connect()(({ dispatch }) => {
   return (
   <div className={styles.error}>
-    <Icon type="frown-o" />
-    <h1>404 Not Found</h1>
+    <img src={devIcon} style={{width:'200px',height:'106px'}}/>
+    <h4 style={{marginTop:'20px',color:'#999999'}}>程序猿加紧开发中...</h4>
   </div>
   );
 });

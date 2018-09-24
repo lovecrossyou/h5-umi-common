@@ -1,11 +1,13 @@
-import styles from "./index.less";
+import React from "react";
 import { connect } from "dva";
 import { NavBar, Icon } from "antd-mobile";
 import router from "umi/router";
 import withRouter from "umi/withRouter";
 import config from "../utils/config";
-const { prefix, openPages } = config;
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import styles from "./index.less";
+
+const { prefix, openPages } = config;
 
 
 const Layout = props => {
@@ -17,7 +19,7 @@ const Layout = props => {
       <NavBar
         mode="dark"
         className={styles.barColor}
-        style={{ backgroundColor: "#f59417",height:'50px' }}
+        style={{ backgroundColor: "#cc2636",height:'50px' }}
         icon={
           (props.pathname === "/main" || props.pathname === "/") ?null: (
             <Icon type="left" size={'small'}/>
@@ -51,6 +53,5 @@ function mapStateToProps(state) {
 //       </CSSTransition>
 //     </TransitionGroup>
 // )
-
 
 export default withRouter(connect(mapStateToProps)(Layout));
