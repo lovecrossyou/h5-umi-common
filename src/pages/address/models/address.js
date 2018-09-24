@@ -37,17 +37,7 @@ export default {
         }
       });
     },
-    *update({ payload }, { call, put, select }) {
-      const data = yield call(mainService.query, payload);
-      if (data) {
-        yield put({
-          type: 'save',
-          payload: {
-            list: data.data
-          },
-        })
-      }
-    }
+
   },
   reducers: {
     save(state, action) {
