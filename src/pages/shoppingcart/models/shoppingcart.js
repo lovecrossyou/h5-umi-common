@@ -140,7 +140,7 @@ export default {
   subscriptions: {
     setup({dispatch, history}) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/shoppingcart/page'||pathname === '/') {
+        if (pathname === '/shoppingcart/page') {
           dispatch({
             type: 'fetch'
           })

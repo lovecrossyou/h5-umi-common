@@ -22,7 +22,7 @@ const Layout = props => {
         style={{ backgroundColor: "#cc2636",height:'50px' }}
         icon={
           (props.pathname === "/main" || props.pathname === "/") ?null: (
-            <Icon type="left" size={'small'}/>
+            <Icon type="left" size={'lg'}/>
           )
         }
         onLeftClick={() => {
