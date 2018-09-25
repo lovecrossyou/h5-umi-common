@@ -15,15 +15,6 @@ const CreateNewAddress = ({onClick}) => {
 }
 
 class AddressList extends React.Component {
-
-
-  // UNSAFE_componentWillMount() {
-  //   this.props.dispatch({
-  //     type: 'address/fetch',
-  //     payload: {}
-  //   });
-  // }
-
   // 编辑
   addresseEdit = (address)=>{
     this.props.dispatch({

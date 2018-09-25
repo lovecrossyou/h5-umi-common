@@ -15,7 +15,7 @@ export default {
                     })
                     dispatch({
                         type:'global/setTitle',payload:{
-                          text:"xxxx"
+                          text:"组件"
                         }
                       })
                 }

@@ -1,13 +1,15 @@
 import request from '../../../utils/request';
 
 export function queryShoppingCart() {
-  return request('/api/v1/shoppingcarts',{
-    method:'POST'
+  return request({
+    url:'/api/shoppingcarts',
+    method: 'post',
   });
 }
 
 export function queryAddressList() {
-  return request('/api/v1/addresslist',{
-    method:'POST'
+  return request({
+    url:'/api/addresslist',
+    method: 'post',
   });
 }

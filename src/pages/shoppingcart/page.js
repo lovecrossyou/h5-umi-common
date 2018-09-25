@@ -130,13 +130,6 @@ const EmptyShoppingCart = ()=>{
 
 class ShoppingCart extends React.Component {
 
-  UNSAFE_componentWillMount() {
-    this.props.dispatch({
-      type: 'shoppingcart/fetch',
-      payload: {}
-    })
-  }
-
   // 购物车的选中与否
   toggleShoppingSelect = () => {
     this.props.dispatch({
@@ -187,18 +180,9 @@ class ShoppingCart extends React.Component {
 
 
   render() {
-    const shoppingCart = this.props.store.shoppingCart;
+    const shoppingCart = this.props.store;
     return (
-      <div style={{paddingBottom: '50px', paddingTop: '50px'}}>
-        <div style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999}}>
-          <NavBar
-            mode="dark"
-            onLeftClick={() => console.log('onLeftClick')}
-            rightContent={[
-              <Icon key="1" type="ellipsis" onClick={this.toggleEditState}/>,
-            ]}
-          >购物车</NavBar>
-        </div>
+      <div style={{marginBottom: '50px',}}>
         {shoppingCart.list.map((shop, index) => <ShopItem
           setProductCount={this.setProductCount}
           selectProduct={this.selectProduct}
@@ -217,6 +201,6 @@ class ShoppingCart extends React.Component {
   }
 }
 
-export default connect(({shoppingcart}) => ({
-  store: shoppingcart
+export default connect(state => ({
+  store: state.shoppingcart.shoppingCart
 }))(ShoppingCart);

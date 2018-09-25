@@ -132,22 +132,34 @@ const reduceNewShoppingCartState = state=>{
 
 
 export default {
-
   namespace: 'shoppingcart',
-
   state: {
     shoppingCart: new ShoppingCart()
   },
 
   subscriptions: {
     setup({dispatch, history}) {
+      return history.listen(({ pathname, query }) => {
+        if (pathname === '/shoppingcart/page'||pathname === '/') {
+          dispatch({
+            type: 'fetch'
+          })
+          dispatch({
+            type:'global/setTitle',payload:{
+              text:"购物车"
+            }
+          })
+        }
+      });
     },
   },
 
   effects: {
-    * fetch({payload}, {call, put}) {
+    *fetch({ payload }, { call, put }) {
       const response = yield call(queryShoppingCart, payload);
-      yield put({type: 'save', payload: response.shops});
+
+      console.log('response ',response)
+      yield put({type: 'save', payload: response.data.shops});
     },
   },
 
