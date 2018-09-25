@@ -1,11 +1,12 @@
 export default {
+  publicPath:'/h5/',
+  runtimePublicPath:true,
   plugins: [
     ['umi-plugin-react', {
-      dynamicImport: true,
       dva: {
         immer: true,
       },
-      antd: true
+      antd: true,
     }],
   ],
 }
