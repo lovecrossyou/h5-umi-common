@@ -15,7 +15,9 @@ export default {
           setAccessToken(accessToken)
           dispatch({
             type: 'fetch',
-            payload: {}
+            payload: {
+              accessToken:accessToken
+            }
           })
           dispatch({
             type: 'global/setTitle', payload: {
