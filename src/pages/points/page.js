@@ -4,7 +4,7 @@ import styles from './page.less'
 import {routerRedux } from 'dva/router';
 
 // 积分商城
-const UserInfo = () => {
+const UserInfo = ({userInfo}) => {
   return <div style={{
     height: '82px',
     display: 'flex',
@@ -15,14 +15,14 @@ const UserInfo = () => {
     padding: '34px'
   }}>
     <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
-      <img style={{width: '52px', height: '52px', border: 'solid 1px #e1e1e1', borderRadius: '50%'}} width='52px' height='52px' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536582124408&di=e0db4bbb1854efa7904e07f78b8c4f8d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fca1349540923dd54ee0b724adb09b3de9c82489c.jpg" alt=""/>
+      <img style={{width: '52px', height: '52px', border: 'solid 1px #e1e1e1', borderRadius: '50%'}} width='52px' height='52px' src={userInfo.userIconUrl} alt=""/>
       <div style={{paddingLeft: '13px'}}>
-        <div style={{color: '#040404', fontSize: '15px', lineHeight: '34px'}}>张小三</div>
+        <div style={{color: '#040404', fontSize: '15px', lineHeight: '34px'}}>{userInfo.nickName}</div>
         <div style={{color: '#AEAAAA', fontSize: '12px', lineHeight: '34px'}}>普通会员</div>
       </div>
     </div>
     <div style={{display: 'flex', flexDirection: 'row'}}>
-      <div>122</div>
+      <div>{userInfo.accountAllAmount}</div>
       <div style={{color: '#040404'}}>积分</div>
     </div>
   </div>
@@ -136,8 +136,11 @@ class Points extends React.Component {
 
 
   render() {
+    const store = this.props.store ;
+
+    console.log('store ',store);
     return <div style={{backgroundColor: '#f5f5f5'}}>
-      <UserInfo/>
+      <UserInfo userInfo={store.userInfo}/>
       <Banner/>
       <Category onClick={this.goProductList}/>
       <CenterView/>
@@ -147,6 +150,6 @@ class Points extends React.Component {
   }
 }
 
-export default connect(({shoppingcart}) => ({
-  store: shoppingcart
+export default connect(state => ({
+  store: state.points
 }))(Points);

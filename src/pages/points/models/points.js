@@ -4,7 +4,7 @@ import {queryUserInfo} from "../services/points";
 export default {
   namespace: 'points',
   state: {
-    shoppingCart: {}
+    userInfo: {}
   },
 
   subscriptions: {
@@ -14,8 +14,8 @@ export default {
           const accessToken = query.accessToken;
           setAccessToken(accessToken)
           dispatch({
-            type:'fetch',
-            payload:{}
+            type: 'fetch',
+            payload: {}
           })
           dispatch({
             type: 'global/setTitle', payload: {
@@ -30,15 +30,18 @@ export default {
   effects: {
     * fetch({payload}, {call, put}) {
       const response = yield call(queryUserInfo, payload);
-      console.log('response ',response)
-      // yield put({type: 'save', payload: response.data.shops});
+      console.log('response ', response)
+      yield put({type: 'save', payload: response.data});
     },
   },
 
 
   reducers: {
     save(state, action) {
-      return {...state};
+      return {
+        ...state,
+        userInfo: action.payload
+      }
     }
-  },
-};
+  }
+}

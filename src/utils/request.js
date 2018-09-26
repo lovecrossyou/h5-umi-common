@@ -34,22 +34,17 @@ export default async function request(options) {
   const url = options.url;
   const accessToken = getAccessToken();
 
-  const opt = Object.assign(options, {
+  const option = {
+    method: options.method,
+    mode: 'cors',
+    body: JSON.stringify(options.params),
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'accessToken': accessToken
-    },
-  })
-
-  console.log('opt ', opt);
-  const response = await fetch(url, opt);
+    }
+  }
+  const response = await fetch(url, option);
+  console.log('response ', response);
   checkStatus(response);
-  const data = await response.json();
-
-  const ret = {
-    data,
-    headers: {},
-  };
-
-  return ret;
+  return await response.json();
 }

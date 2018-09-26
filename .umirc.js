@@ -10,4 +10,11 @@ export default {
       antd: true,
     }],
   ],
+  proxy: {
+    "/api/v1": {
+      "target": "https://api.tuexing.com/",
+      "changeOrigin": true,
+      "pathRewrite": {"^/api/v1": ""}
+    }
+  },
 }
