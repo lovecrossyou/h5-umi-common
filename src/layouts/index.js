@@ -4,10 +4,9 @@ import { NavBar, Icon } from "antd-mobile";
 import router from "umi/router";
 import withRouter from "umi/withRouter";
 import config from "../utils/config";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./index.less";
 
-const { prefix, openPages } = config;
+const {openPages } = config;
 
 
 const Layout = props => {
@@ -44,14 +43,5 @@ function mapStateToProps(state) {
     pathname: state.routing.location.pathname
   };
 }
-
-// const Animate = withRouter(
-//   ({ location }) =>
-//     <TransitionGroup>
-//       <CSSTransition key={location.key} classNames="fade" timeout={300}>
-//         { Layout }
-//       </CSSTransition>
-//     </TransitionGroup>
-// )
 
 export default withRouter(connect(mapStateToProps)(Layout));
