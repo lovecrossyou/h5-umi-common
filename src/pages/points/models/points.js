@@ -1,5 +1,6 @@
 import {setAccessToken} from "../../../utils/authority";
 import {queryUserInfo} from "../services/points";
+import { Toast} from 'antd-mobile';
 
 export default {
   namespace: 'points',
@@ -12,6 +13,7 @@ export default {
       return history.listen(({pathname, query}) => {
         if (pathname === '/points/page') {
           const accessToken = query.accessToken;
+          Toast.info(accessToken, 2);
           setAccessToken(accessToken)
           dispatch({
             type: 'fetch',
