@@ -4,8 +4,6 @@ import styles from './page.less'
 import {routerRedux } from 'dva/router';
 
 // 积分商城
-
-
 const UserInfo = () => {
   return <div style={{
     height: '82px',

@@ -8,11 +8,11 @@ export default {
     themes: path.resolve(__dirname, 'src/themes'),
     images: path.resolve(__dirname, 'src/assets')
   },
-  // proxy: {
-  //   "/api": {
-  //     "target": "http://jsonplaceholder.typicode.com/",
-  //     "changeOrigin": true,
-  //     "pathRewrite": {"^/api": ""}
-  //   }
-  // },
+  proxy: {
+    "/api": {
+      "target": "https://api.tuexing.com/",
+      "changeOrigin": true,
+      "pathRewrite": {"^/api": ""}
+    }
+  },
 }

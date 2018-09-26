@@ -1,4 +1,5 @@
 import fetch from 'dva/fetch';
+import {getAccessToken} from "./authority";
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -29,11 +30,20 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default async function request(options) {
+
   const url = options.url;
-  const response = await fetch(url, options);
+  const accessToken = getAccessToken();
 
+  const opt = Object.assign(options, {
+    headers: {
+      'Content-Type': 'application/json',
+      'accessToken': accessToken
+    },
+  })
+
+  console.log('opt ', opt);
+  const response = await fetch(url, opt);
   checkStatus(response);
-
   const data = await response.json();
 
   const ret = {
