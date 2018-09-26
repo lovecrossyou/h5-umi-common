@@ -1,6 +1,5 @@
 export default {
   publicPath:'/h5/',
-  runtimePublicPath:true,
   history:'hash',
   plugins: [
     ['umi-plugin-react', {
@@ -13,7 +12,6 @@ export default {
   proxy: {
     "/api/v1": {
       "target": "https://api.tuexing.com/",
-      "changeOrigin": true,
       "pathRewrite": {"^/api/v1": ""}
     }
   },
