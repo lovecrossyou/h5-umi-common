@@ -1,6 +1,6 @@
 export default {
-  publicPath:'/h5/',
-  history:'hash',
+  publicPath: '/h5/',
+  history: 'hash',
   plugins: [
     ['umi-plugin-react', {
       dva: {
@@ -10,9 +10,9 @@ export default {
     }],
   ],
   proxy: {
-    "/api/v1": {
+    "/api": {
       "target": "https://api.tuexing.com/",
-      "pathRewrite": {"^/api/v1": ""}
+      "pathRewrite": {'^/api': ''}
     }
   },
 }
