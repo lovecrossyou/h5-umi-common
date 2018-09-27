@@ -3,34 +3,55 @@ import {queryProductList} from "../services/productlist";
 export default {
   namespace: 'productlist',
   state: {
-    products: []
+    guestLikeResult:[],
+    hotResult:[],
+    prefectResult:[],
   },
 
   subscriptions: {
     setup({dispatch, history}) {
       return history.listen(({pathname, query}) => {
-        dispatch({
-          type: 'fetch',
-          payload:{
-            "page":1,
-            "pageSize":20,
-            "category":"hot_product"
-          }
-        })
-        dispatch({
-          type: 'global/setTitle', payload: {
-            text: "商品列表"
-          }
-        })
+        if (pathname === '/productlist/page') {
+          dispatch({
+            type: 'fetch',
+          });
+          dispatch({
+            type: 'global/setTitle', payload: {
+              text: "商品列表"
+            }
+          })
+        }
       });
     },
   },
 
   effects: {
     * fetch({payload}, {call, put}) {
-      const response = yield call(queryProductList, payload);
-      console.log('response ', response)
-      yield put({type: 'save', payload: response.data.content});
+      const [guestLikeResult, hotResult, prefectResult] = yield [
+        call(queryProductList, {
+          "page": 1,
+          "pageSize": 20,
+          "category": "guess_like"
+        }),
+        call(queryProductList, {
+          "page": 1,
+          "pageSize": 20,
+          "category": "hot_product"
+        }),
+        call(queryProductList, {
+          "page": 1,
+          "pageSize": 20,
+          "category": "prefect_product"
+        })
+      ];
+
+      yield put({
+        type: 'save', payload: {
+          guestLikeResult:guestLikeResult.data.content,
+          hotResult:hotResult.data.content,
+          prefectResult:prefectResult.data.content,
+        }
+      });
     },
   },
 
@@ -39,7 +60,9 @@ export default {
     save(state, action) {
       return {
         ...state,
-        products: action.payload
+        guestLikeResult: action.guestLikeResult,
+        hotResult: action.guestLikeResult,
+        prefectResult: action.prefectResult,
       }
     }
   }

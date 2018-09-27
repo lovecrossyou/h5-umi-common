@@ -72,26 +72,49 @@ const CenterView = ()=>{
 }
 
 
-// Hot
-const Hot = () => {
 
-  const Item = ({title, desc}) => {
-    return <div style={{backgroundColor: '#fff', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-      <div style={{
-        width: '62px',
-        height: '62px',
-        border: 'solid 1px #e2e2e2',
-        backgroundColor: '#e2e2e2',
-        borderRadius: '16px'
-      }}/>
-      <div>
-        <div className={styles.title} style={{textAlign: 'center',color:'#D60B0B',fontSize:'15px'}}>{title}</div>
-        <div style={{textAlign: 'center', height: '24px', lineHeight: '24px'}}>{desc}</div>
-      </div>
+const Item = ({item,onClick}) => {
+  return <div onClick={()=>{
+    onClick(item);
+  }} style={{backgroundColor: '#fff', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+    <img src={item.headImage} alt="" style={{
+      width: '62px',
+      height: '62px',
+      border: 'solid 1px #e2e2e2',
+      backgroundColor: '#e2e2e2',
+      borderRadius: '16px'
+    }}/>
+    <div>
+      <div className={styles.title} style={{textAlign: 'center',color:'#D60B0B',fontSize:'15px'}}>{item.price}M币</div>
+      <div style={{textAlign: 'center', height: '24px', lineHeight: '24px',fontSize:'12px'}}>{item.simpleName}</div>
     </div>
-  }
+  </div>
+}
 
+// 猜你喜欢   热门兑换   精品推荐
+const GuessYouLike = ({products,onClick}) => {
+  return <div style={{backgroundColor: '#fff', marginBottom: '15px'}}>
+    <div className={styles.flexR}  style={{height:'10px',padding:'15px',backgroundColor:'#fff'}}>
+      <div>猜你喜欢</div>
+      <div>更多</div>
+    </div>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginTop: '17px',
+      backgroundColor: '#fff',
+      padding: '15px'
+    }}>
+      {
+        products.map((p,index)=><Item key={'#'+index} item={p} onClick={onClick}/>)
+      }
+    </div>
+  </div>
+}
 
+// Hot
+const Hot = ({products,onClick}) => {
   return <div style={{backgroundColor: '#fff', marginBottom: '15px'}}>
     <div className={styles.flexR}  style={{height:'10px',padding:'15px',backgroundColor:'#fff'}}>
       <div>热门兑换</div>
@@ -105,18 +128,18 @@ const Hot = () => {
       backgroundColor: '#fff',
       padding: '15px'
     }}>
-      <Item title='10M币' desc='玻璃清洁剂泡腾片'/>
-      <Item title='60M币' desc='玻璃清洁剂泡腾片'/>
-      <Item title='70M币' desc='玻璃清洁剂泡腾片'/>
+      {
+        products.map((p,index)=><Item key={'#'+index} item={p} onClick={onClick}/>)
+      }
     </div>
   </div>
 }
 
 // Local
-const Local = () => {
+const Local = ({onClick}) => {
   return <div style={{height: '255px', backgroundColor: '#fff', marginBottom: '12px'}}>
-    <div className={styles.flexR} style={{height:'10px',padding:'15px',backgroundColor:'#fff'}}>
-      <div>本地特惠</div>
+    <div onClick={onClick} className={styles.flexR} style={{height:'10px',padding:'15px',backgroundColor:'#fff'}}>
+      <div>精品推荐</div>
     </div>
     <div className={styles.flexR}>
         <div className={styles.localLeft}></div>
@@ -134,18 +157,23 @@ class Points extends React.Component {
     this.props.dispatch(routerRedux.push('/productlist/page'))
   }
 
+  onClick = item=>{
+    this.props.dispatch(
+      routerRedux.push('/productlist/ProductDetail')
+    )
+  }
+
 
   render() {
-    const store = this.props.store ;
-
-    console.log('store ',store);
+    const {guestLikeResult,hotResult,prefectResult,userInfo} = this.props.store ;
     return <div style={{backgroundColor: '#f5f5f5'}}>
-      <UserInfo userInfo={store.userInfo}/>
+      <UserInfo userInfo={userInfo}/>
       <Banner/>
       <Category onClick={this.goProductList}/>
       <CenterView/>
-      <Hot/>
-      <Local/>
+      <GuessYouLike products={guestLikeResult} onClick={this.onClick}/>
+      <Hot products={hotResult} onClick={this.onClick}/>
+      <Local  products={prefectResult} onClick={this.onClick}/>
     </div>
   }
 }

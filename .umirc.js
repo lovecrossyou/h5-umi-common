@@ -12,4 +12,11 @@ export default {
   proxy: {
     "target": "http://api.tuexing.com/"
   },
+  // proxy:{
+  //   "/api": {
+  //     "target": "http://api.tuexing.com/",
+  //     "changeOrigin": true,
+  //     "pathRewrite": {"^/api": ""}
+  //   }
+  // }
 }

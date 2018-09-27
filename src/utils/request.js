@@ -37,7 +37,7 @@ export default async function request(options) {
   const option = {
     method: options.method,
     mode: 'cors',
-    body: JSON.stringify(options.params),
+    body: JSON.stringify(options.payload),
     ssl: false,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
