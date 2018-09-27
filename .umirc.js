@@ -10,9 +10,6 @@ export default {
     }],
   ],
   proxy: {
-    "/api": {
-      "target": "https://api.tuexing.com/",
-      "pathRewrite": {'^/api': ''}
-    }
+    "target": "http://api.tuexing.com/"
   },
 }

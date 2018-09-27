@@ -38,6 +38,7 @@ export default async function request(options) {
     method: options.method,
     mode: 'cors',
     body: JSON.stringify(options.params),
+    ssl: false,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'accessToken': accessToken

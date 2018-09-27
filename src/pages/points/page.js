@@ -131,7 +131,7 @@ const Local = () => {
 class Points extends React.Component {
 
   goProductList = ()=>{
-    this.props.dispatch(routerRedux.push('/products'))
+    this.props.dispatch(routerRedux.push('/productlist/page'))
   }
 
 
