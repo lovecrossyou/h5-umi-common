@@ -121,6 +121,9 @@ class Page extends React.Component {
   }
 
   render() {
+
+
+    console.log(this.props.store.products)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -182,5 +185,7 @@ class Page extends React.Component {
 }
 
 
-
-export default connect()(Page) ;
+// products
+export default connect(state => ({
+  store: state.productlist
+}))(Page);
